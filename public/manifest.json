@@ -1,0 +1,33 @@
+{
+    "name": "レリモバ - トークンがもらえる格安モバイル",
+    "short_name": "レリモバ",
+    "description": "レリモバは、利用料金に対して「トークン」を還元する新時代の通信サービスです。",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4338ca",
+    "icons": [
+      {
+        "src": "/images/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/images/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+      }
+    ],
+    "orientation": "portrait",
+    "lang": "ja",
+    "dir": "ltr",
+    "categories": ["business", "finance", "utilities"],
+    "related_applications": [
+      {
+        "platform": "web"
+      }
+    ],
+    "prefer_related_applications": false
+  }

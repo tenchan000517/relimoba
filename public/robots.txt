@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# 正式サイトマップ
+Sitemap: https://mobile.relic-v.com/sitemap.xml
+
+# 正式ドメインを明示
+# メインサイト: https://mobile.relic-v.com

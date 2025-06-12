@@ -1,0 +1,37 @@
+{
+    "redirects": [
+      {
+        "source": "/:path*",
+        "has": [
+          {
+            "type": "host",
+            "value": "relic-v.com"
+          }
+        ],
+        "destination": "https://mobile.relic-v.com/:path*",
+        "permanent": true
+      },
+      {
+        "source": "/:path*",
+        "has": [
+          {
+            "type": "host",
+            "value": "www.relic-v.com"
+          }
+        ],
+        "destination": "https://mobile.relic-v.com/:path*",
+        "permanent": true
+      },
+      {
+        "source": "/:path*",
+        "has": [
+          {
+            "type": "host",
+            "value": "relimobva.vercel.app"
+          }
+        ],
+        "destination": "https://mobile.relic-v.com/:path*",
+        "permanent": true
+      }
+    ]
+  }

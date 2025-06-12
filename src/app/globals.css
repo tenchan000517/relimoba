@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -17,10 +18,105 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+  
+  /* ナイトモードでも明示的に色を維持するためのオーバーライド */
+  .force-light-mode {
+    --background: #ffffff !important;
+    --foreground: #171717 !important;
+    background-color: #ffffff !important;
+    color: #171717 !important;
+    color-scheme: light !important;
+    forced-color-adjust: none !important;
+    -webkit-forced-color-adjust: none !important;
+  }
+  
+  /* テキスト色の明示的なオーバーライド */
+  .force-light-mode h1, 
+  .force-light-mode h2, 
+  .force-light-mode h3, 
+  .force-light-mode h4, 
+  .force-light-mode h5, 
+  .force-light-mode h6, 
+  .force-light-mode p, 
+  .force-light-mode span, 
+  .force-light-mode a, 
+  .force-light-mode div {
+    color: inherit !important;
+  }
+  
+  /* トークンセクション特有のスタイル */
+  #token.force-light-mode {
+    background-color: #ffffff !important;
+  }
+  
+  #token.force-light-mode h2 {
+    color: #111827 !important;
+  }
+  
+  #token.force-light-mode p {
+    color: #374151 !important;
+  }
+  
+  #token.force-light-mode .card {
+    background-color: #ffffff !important;
+  }
+  
+  /* ボーダー色の固定 */
+  .force-light-mode .border {
+    border-color: #e5e7eb !important;
+  }
+  
+  /* リンク色の固定 */
+  .force-light-mode a {
+    color: #2563eb !important;
+  }
+}
+
+/* Braveブラウザのリーダーモードのオーバーライド */
+@media (prefers-color-scheme: dark) {
+  @-moz-document url-prefix() {
+    .force-light-mode {
+      background-color: #ffffff !important;
+      color: #171717 !important;
+    }
+  }
+  
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .force-light-mode {
+      -webkit-filter: none !important;
+      filter: none !important;
+    }
+  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* メタタグでのオーバーライド用スタイル */
+head {
+  display: block;
+}
+
+head::after {
+  content: "";
+  display: none;
+}
+
+/* IE/Edgeのハイコントラストモード対策 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .force-light-mode {
+    background-color: #ffffff !important;
+    color: #171717 !important;
+  }
+}
+
+/* Safariでのダークモード対策 */
+@supports (background: -apple-system) {
+  .force-light-mode {
+    background-color: #ffffff !important;
+    color: #171717 !important;
+  }
 }
