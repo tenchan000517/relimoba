@@ -23,7 +23,6 @@ export default function FeatureSection() {
     card2: false,
     web3money: false, // 修正: card3からweb3moneyに変更
     xCard: false, // X抽選会カード用の状態を追加
-    storeCard: false, // 店舗カード用の状態を追加
     referral: false, // 紹介カード用の状態を追加
     campaign: false, // キャンペーン情報用の状態を追加
     sticker: false,  // ステッカー情報用の状態を追加
@@ -69,7 +68,6 @@ export default function FeatureSection() {
           card2: true,
           web3money: true, // 修正: card3からweb3moneyに変更
           xCard: true, // X抽選会カードの状態も更新
-          storeCard: true, // 店舗カードの状態も更新
           referral: true, // 追加したカードの状態も更新
           campaign: true,
           sticker: true,
@@ -79,14 +77,13 @@ export default function FeatureSection() {
       } else {
         // 上からスクロールしてきた場合は通常のアニメーション（遅延あり）
         const animationTimers = [
-          setTimeout(() => setAnimatedElements(prev => ({ ...prev, button1: true })), 100), // 新しいボタン
-          setTimeout(() => setAnimatedElements(prev => ({ ...prev, button0: true })), 300),
+          setTimeout(() => setAnimatedElements(prev => ({ ...prev, button0: true })), 100), // 新しいボタン
+          setTimeout(() => setAnimatedElements(prev => ({ ...prev, button1: true })), 300),
           setTimeout(() => setAnimatedElements(prev => ({ ...prev, button2: true })), 500),
           setTimeout(() => setAnimatedElements(prev => ({ ...prev, button3: true })), 700),
           setTimeout(() => setAnimatedElements(prev => ({ ...prev, card2: true })), 900), // reward
           setTimeout(() => setAnimatedElements(prev => ({ ...prev, web3money: true })), 1100), // web3money
           setTimeout(() => setAnimatedElements(prev => ({ ...prev, xCard: true })), 1300), // X抽選会カード
-          setTimeout(() => setAnimatedElements(prev => ({ ...prev, storeCard: true })), 1400), // 店舗カード
           setTimeout(() => setAnimatedElements(prev => ({ ...prev, referral: true })), 1500), // 紹介カード
           setTimeout(() => setAnimatedElements(prev => ({ ...prev, campaign: true })), 1700),
           setTimeout(() => setAnimatedElements(prev => ({ ...prev, sticker: true })), 1900),
@@ -109,7 +106,6 @@ export default function FeatureSection() {
         card2: false,
         web3money: false, // 修正: card3からweb3moneyに変更
         xCard: false, // X抽選会カードの状態もリセット
-        storeCard: false, // 店舗カードの状態もリセット
         referral: false, // 追加したカードの状態もリセット
         campaign: false,
         sticker: false,
@@ -224,8 +220,8 @@ export default function FeatureSection() {
           </Link>
         </div>
 
-        {/* Feature Cards - PCでは5カラムのレイアウトに変更 */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {/* Feature Cards - PCでは4カラムのレイアウトに変更 */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Card 2: reward */}
           <div
             onClick={() => scrollToSection('sticker-section')}
@@ -291,30 +287,6 @@ export default function FeatureSection() {
               </div>
             </div>
           </div>
-
-          {/* Card Store: 店舗情報 (新規追加) */}
-          <a
-            href="https://xmobile.ne.jp/shop/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`relative group overflow-hidden backdrop-blur-sm border border-gray-800 rounded-xl shadow-lg transition-all duration-500 transform hover:scale-105 cursor-pointer ${animatedElements.storeCard ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}
-          >
-            <div className="p-4 flex flex-row md:flex-col items-center">
-              <div className="relative w-2/5 md:w-full h-32 md:h-60 md:mb-4 mr-4 md:mr-0 overflow-hidden rounded-lg">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-transparent opacity-60"></div>
-                <Image
-                  src="/images/img/100.jpg"
-                  alt="全国の店舗"
-                  fill
-                  className="object-contain transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <div className="w-1/2 md:w-full text-left md:text-center">
-                <h3 className="text-lg md:text-2xl font-bold mb-2 text-white">全国のレリモバ</h3>
-                <h4 className="text-lg md:text-2xl font-bold text-white">100店舗以上！</h4>
-              </div>
-            </div>
-          </a>
 
           {/* Card 4: 紹介プログラム (新規追加) */}
           <a

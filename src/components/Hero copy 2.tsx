@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { useAppContext } from '@/context/AppContext';
 import { useInView } from 'react-intersection-observer';
 import AnimatedCharacters from '@/components/ui/AnimatedCharacters';
-import { siteConfig } from '@/config/site';
 import CtaButton from '@/components/ui/cta-button';
+import { siteConfig } from '@/config/site';
 
 export default function Hero() {
   const { isPageLoaded } = useAppContext();
@@ -58,14 +58,8 @@ export default function Hero() {
   const buttonOpacity = calculateOpacity();
 
   return (
-    <section
-      id="hero"
-      className="relative bg-black overflow-hidden flex flex-col justify-center items-center"
-      style={{
-        height: 'calc(100vh + 5rem)', // -mt-20分の高さを追加
-        marginTop: '-5rem' // -mt-20と同じ
-      }}
-    >      {/* Title at the top */}
+    <section id="hero" className="relative min-h-screen bg-black overflow-hidden flex flex-col justify-center items-center">
+      {/* Title at the top */}
       {/* <div 
         ref={titleRef}
         className="absolute top-24 md:top-24 left-1/2 transform -translate-x-1/2 w-full text-center z-20"
@@ -118,7 +112,7 @@ export default function Hero() {
       {/* Feature heading moved to hero section */}
       <div
         ref={headingRef}
-        className="absolute bottom-32 md:bottom-50 left-1/2 transform -translate-x-1/2 w-full text-center z-30" // z-30を追加
+        className="absolute bottom-42 md:bottom-32 left-1/2 transform -translate-x-1/2 w-full text-center z-30"
       >
         <h2 className={`text-3xl md:text-5xl font-bold text-white transition-all duration-1000 ${inView ? 'opacity-100' : 'opacity-0'}`}>
           「トークン」がもらえる<br />格安モバイル
@@ -128,7 +122,7 @@ export default function Hero() {
       {/* CTA Button */}
       <div
         ref={ctaRef}
-        className="absolute bottom-12 md:bottom-26 left-1/2 transform -translate-x-1/2 container mx-auto text-center z-30"
+        className="absolute bottom-16 md:bottom-16 left-1/2 transform -translate-x-1/2 text-center z-30"
       >
         <CtaButton
           href={siteConfig.cta.signup}
@@ -144,7 +138,7 @@ export default function Hero() {
 
       {/* Scroll down button - fade out smoothly when scrolled */}
       <div
-        className={`absolute bottom-0 md:bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-700 ${isPageLoaded && isImageLoaded ? 'translate-y-0' : 'translate-y-10'
+        className={`absolute bottom-12 md:bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-700 ${isPageLoaded && isImageLoaded ? 'translate-y-0' : 'translate-y-10'
           }`}
         style={{
           opacity: buttonOpacity,
@@ -187,6 +181,21 @@ export default function Hero() {
         
         .animate-slideIn {
           animation: slideInFromLeft 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+          from { 
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to { 
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out forwards;
         }
       `}</style>
     </section>

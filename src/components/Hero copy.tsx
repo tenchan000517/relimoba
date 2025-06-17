@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { useAppContext } from '@/context/AppContext';
 import { useInView } from 'react-intersection-observer';
 import AnimatedCharacters from '@/components/ui/AnimatedCharacters';
-import { siteConfig } from '@/config/site';
-import CtaButton from '@/components/ui/cta-button';
 
 export default function Hero() {
   const { isPageLoaded } = useAppContext();
@@ -21,12 +19,6 @@ export default function Hero() {
   });
 
   const { ref: titleRef, inView: titleInView } = useInView({
-    threshold: 0.2,
-    triggerOnce: false,
-  });
-
-  // CTAボタン用のinView
-  const { ref: ctaRef, inView: ctaInView } = useInView({
     threshold: 0.2,
     triggerOnce: false,
   });
@@ -58,14 +50,8 @@ export default function Hero() {
   const buttonOpacity = calculateOpacity();
 
   return (
-    <section
-      id="hero"
-      className="relative bg-black overflow-hidden flex flex-col justify-center items-center"
-      style={{
-        height: 'calc(100vh + 5rem)', // -mt-20分の高さを追加
-        marginTop: '-5rem' // -mt-20と同じ
-      }}
-    >      {/* Title at the top */}
+    <section id="hero" className="relative min-h-screen bg-black overflow-hidden flex flex-col justify-center items-center">
+      {/* Title at the top */}
       {/* <div 
         ref={titleRef}
         className="absolute top-24 md:top-24 left-1/2 transform -translate-x-1/2 w-full text-center z-20"
@@ -118,33 +104,16 @@ export default function Hero() {
       {/* Feature heading moved to hero section */}
       <div
         ref={headingRef}
-        className="absolute bottom-32 md:bottom-50 left-1/2 transform -translate-x-1/2 w-full text-center z-30" // z-30を追加
+        className="absolute bottom-24 md:bottom-32 left-1/2 transform -translate-x-1/2 w-full text-center z-30" // z-30を追加
       >
         <h2 className={`text-3xl md:text-5xl font-bold text-white transition-all duration-1000 ${inView ? 'opacity-100' : 'opacity-0'}`}>
           「トークン」がもらえる<br />格安モバイル
         </h2>
       </div>
 
-      {/* CTA Button */}
-      <div
-        ref={ctaRef}
-        className="absolute bottom-12 md:bottom-26 left-1/2 transform -translate-x-1/2 container mx-auto text-center z-30"
-      >
-        <CtaButton
-          href={siteConfig.cta.signup}
-          variant="cta"
-          size="lg"
-          animation="bounce"
-          external={true}
-          className={`text-xl font-bold ${ctaInView ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}
-        >
-          今すぐお申し込み！
-        </CtaButton>
-      </div>
-
       {/* Scroll down button - fade out smoothly when scrolled */}
       <div
-        className={`absolute bottom-0 md:bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-700 ${isPageLoaded && isImageLoaded ? 'translate-y-0' : 'translate-y-10'
+        className={`absolute bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-700 ${isPageLoaded && isImageLoaded ? 'translate-y-0' : 'translate-y-10'
           }`}
         style={{
           opacity: buttonOpacity,
