@@ -105,17 +105,17 @@ export default function Web3MoneySection() {
                     </h2>
                 </div>
 
-                {/* 画像セクション1 - アスペクト比3:2に固定、クリックでYouTubeリンクに飛ぶ */}
+                {/* 動画セクション1 - アスペクト比3:2に固定、ループ再生、クリックでYouTubeリンクに飛ぶ */}
                 <div className={`flex justify-center mb-6 transition-all duration-1000 ${animatedElements.image1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                     <div className="relative w-full max-w-4xl rounded-xl shadow-lg">
                         <a href="https://youtube.com/@web3money_relic?si=WcPZNytZP8jv4_FP" target="_blank" rel="noopener noreferrer">
                             <div className="aspect-w-3 aspect-h-2 overflow-hidden">
-                                <Image
-                                    src="/images/img/youtube.jpg"
-                                    alt="YouTube Channel"
-                                    width={900}
-                                    height={600}
-                                    className="object-cover rounded-xl cursor-pointer"
+                                <video
+                                    src="/images/img/web3money.mov"
+                                    autoPlay
+                                    loop
+                                    muted
+                                    className="object-cover rounded-xl w-full h-full cursor-pointer"
                                     style={{ aspectRatio: "3/2", objectFit: "cover" }}
                                 />
                             </div>
